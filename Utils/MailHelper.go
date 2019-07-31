@@ -4,13 +4,14 @@ import (
 	"bytes"
 	"crypto/tls"
 	"encoding/base64"
-	"fcsecWEB/Logger"
 	"fmt"
 	"io/ioutil"
 	"net"
 	"net/smtp"
 	"path/filepath"
 	"strconv"
+
+	"github.com/bsTool/Logger"
 
 	"github.com/go-gomail/gomail"
 )
@@ -120,7 +121,7 @@ func GetAttachMsg(body, email, toEmail, Subject, attaFile string) []byte {
 
 func SendMail(server, portSTR, email, pwd, toEmail, Subject, Content, file string) error {
 	m := gomail.NewMessage()
-	m.SetAddressHeader("From", email, "搬砖人Bison")    // 发件人
+	m.SetAddressHeader("From", email, "搬砖人Bison")       // 发件人
 	m.SetHeader("To", m.FormatAddress(toEmail, "收件人"))  // 收件人
 	m.SetHeader("Cc", m.FormatAddress(toEmail, "收件人"))  //抄送
 	m.SetHeader("Bcc", m.FormatAddress(toEmail, "收件人")) // 暗送
